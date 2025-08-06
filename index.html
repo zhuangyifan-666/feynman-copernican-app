@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>费曼学习法与哥白尼翻转</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>费曼学习法与哥白尼翻转</h1>
+            <p>通过教学和视角转换掌握复杂概念</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#" class="active" data-view="dashboard">仪表盘</a></li>
+                <li><a href="#" data-view="feynman">费曼方法</a></li>
+                <li><a href="#" data-view="copernican">哥白尼翻转</a></li>
+                <li><a href="#" data-view="library">我的资料库</a></li>
+                <li><a href="#" data-view="settings">设置</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- 仪表盘视图 -->
+            <section id="dashboard" class="view active">
+                <h2>欢迎开始您的学习之旅</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-book"></i>
+                        <h3>主题</h3>
+                        <p class="count">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>洞察</h3>
+                        <p class="count">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-sync-alt"></i>
+                        <h3>视角转换</h3>
+                        <p class="count">0</p>
+                    </div>
+                </div>
+                
+                <div class="quick-actions">
+                    <h3>快捷操作</h3>
+                    <button id="new-topic-btn" class="btn primary">
+                        <i class="fas fa-plus"></i> 新主题
+                    </button>
+                    <button id="continue-btn" class="btn secondary" disabled>
+                        <i class="fas fa-play"></i> 继续学习
+                    </button>
+                </div>
+                
+                <div class="recent-activity">
+                    <h3>最近活动</h3>
+                    <p class="empty-state">暂无最近活动。从创建新主题开始吧！</p>
+                </div>
+            </section>
+
+            <!-- 费曼方法视图 -->
+            <section id="feynman" class="view">
+                <h2>费曼学习法</h2>
+                <div class="method-explanation">
+                    <p>费曼技术是以物理学家理查德·费曼命名的学习方法。它通过用简单术语解释概念来帮助你深入理解。</p>
+                    
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h3>选择概念</h3>
+                            <p>选择你想要学习的主题或概念。</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h3>简单教授</h3>
+                            <p>用自己的话解释概念，就像教一个孩子一样。</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h3>识别知识缺口</h3>
+                            <p>记录下你难以清晰解释的地方。</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h3>复习并简化</h3>
+                            <p>回到学习资源，填补知识缺口，进一步简化解释。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feynman-workspace">
+                    <h3>费曼工作区</h3>
+                    <div class="workspace-container">
+                        <div class="topic-selection">
+                            <label for="topic-select">选择主题：</label>
+                            <select id="topic-select">
+                                <option value="">-- 创建新主题 --</option>
+                            </select>
+                            <button id="create-topic-btn" class="btn primary">创建新主题</button>
+                        </div>
+                        
+                        <div id="ai-mode" class="tab-content active">
+                            <div class="ai-chat-container">
+                                <div class="chat-messages" id="chat-messages">
+                                    <div class="message ai-message">
+                                        <div class="message-avatar">AI</div>
+                                        <div class="message-content">
+                                            <p>你好！我是你的费曼学习助手。请告诉我你想学习的概念，我会帮助你通过费曼技术来掌握它。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="chat-input-container">
+                                    <textarea id="chat-input" placeholder="输入你的消息..." rows="3"></textarea>
+                                    <button id="send-message-btn" class="btn primary">
+                                        <i class="fas fa-paper-plane"></i> 发送
+                                    </button>
+                                </div>
+                                <div class="ai-controls">
+                                    <button id="save-chat-btn" class="btn secondary">保存对话</button>
+                                    <button id="clear-chat-btn" class="btn secondary">清除对话</button>
+                                    <button id="generate-summary-btn" class="btn primary">生成学习总结</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 哥白尼翻转视图 -->
+            <section id="copernican" class="view">
+                <h2>哥白尼翻转</h2>
+                <div class="method-explanation">
+                    <p>哥白尼翻转是一种视角转换技术，帮助你从不同角度看待概念，类似于哥白尼如何彻底改变我们对太阳系的理解。</p>
+                    
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h3>识别当前视角</h3>
+                            <p>认识到你目前如何理解这个概念。</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h3>翻转视角</h3>
+                            <p>从相反或不同的角度考虑概念。</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h3>比较洞察</h3>
+                            <p>记录从这种视角转换中产生的新理解。</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h3>整合观点</h3>
+                            <p>结合多个视角的洞察，获得更深入的理解。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="copernican-workspace">
+                    <h3>视角转换工作区</h3>
+                    <div class="workspace-container">
+                        <div class="topic-selection">
+                            <label for="flip-topic-select">选择主题：</label>
+                            <select id="flip-topic-select">
+                                <option value="">-- 选择主题 --</option>
+                            </select>
+                        </div>
+                        
+                        <div class="perspectives-container">
+                            <div class="perspective-column">
+                                <h4>原始视角</h4>
+                                <textarea id="original-perspective" placeholder="描述你当前的理解..."></textarea>
+                            </div>
+                            <div class="perspective-column">
+                                <h4>翻转视角</h4>
+                                <textarea id="flipped-perspective" placeholder="从相反或不同角度描述概念..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="insights-area">
+                            <h4>新洞察</h4>
+                            <textarea id="insights-text" placeholder="从这种视角转换中产生了什么新的理解？"></textarea>
+                            <div class="controls">
+                                <button id="save-insights-btn" class="btn primary">保存洞察</button>
+                                <button id="generate-questions-btn" class="btn secondary">生成问题</button>
+                            </div>
+                        </div>
+                        
+                        <div class="questions-area">
+                            <h4>引发思考的问题</h4>
+                            <ul id="questions-list">
+                                <li class="empty-state">生成后问题将显示在这里。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 资料库视图 -->
+            <section id="library" class="view">
+                <h2>我的学习资料库</h2>
+                <div class="library-controls">
+                    <input type="text" id="search-library" placeholder="搜索主题...">
+                    <select id="sort-library">
+                        <option value="recent">最近</option>
+                        <option value="name">名称 (A-Z)</option>
+                        <option value="progress">进度</option>
+                    </select>
+                </div>
+                
+                <div class="topics-container">
+                    <p class="empty-state">你的资料库是空的。从创建新主题开始吧！</p>
+                    <!-- 主题将动态添加到这里 -->
+                </div>
+            </section>
+
+            <!-- 设置视图 -->
+            <section id="settings" class="view">
+                <h2>设置</h2>
+                <div class="settings-container">
+                    <div class="setting-group">
+                        <h3>外观</h3>
+                        <div class="setting-item">
+                            <label for="theme-select">主题：</label>
+                            <select id="theme-select">
+                                <option value="light">浅色</option>
+                                <option value="dark">深色</option>
+                                <option value="system">系统默认</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="font-size">字体大小：</label>
+                            <input type="range" id="font-size" min="12" max="24" value="16">
+                            <span id="font-size-value">16px</span>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>通知</h3>
+                        <div class="setting-item checkbox">
+                            <input type="checkbox" id="reminder-notifications" checked>
+                            <label for="reminder-notifications">学习提醒</label>
+                        </div>
+                        <div class="setting-item checkbox">
+                            <input type="checkbox" id="progress-notifications" checked>
+                            <label for="progress-notifications">进度更新</label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h3>数据管理</h3>
+                        <div class="setting-item">
+                            <button id="export-data-btn" class="btn secondary">导出我的数据</button>
+                            <button id="import-data-btn" class="btn secondary">导入数据</button>
+                        </div>
+                        <div class="setting-item">
+                            <button id="clear-data-btn" class="btn danger">清除所有数据</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 费曼学习法与哥白尼翻转</p>
+        </footer>
+    </div>
+
+    <!-- 创建新主题的模态框 -->
+    <div id="new-topic-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>创建新主题</h2>
+            <form id="new-topic-form">
+                <div class="form-group">
+                    <label for="topic-name">主题名称：</label>
+                    <input type="text" id="topic-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="topic-category">分类：</label>
+                    <input type="text" id="topic-category" placeholder="可选">
+                </div>
+                <div class="form-group">
+                    <label for="topic-description">简短描述：</label>
+                    <textarea id="topic-description" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary cancel-modal">取消</button>
+                    <button type="submit" class="btn primary">创建主题</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
